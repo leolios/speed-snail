@@ -309,20 +309,26 @@ if ping -q -c 1 -W 1 8.8.8.8 >/dev/null; then
 		  echo "##################"
 		  echo "Installing Tool Tweak and configure themes"
 		  echo "##################"
-		  cd && mkdir .themes && mkdir .icons
-		  
+
+		  cd && mkdir .icons .themes
+      wget https://gitlab.com/jc.henry/speed-snail/-/archive/master/speed-snail-master.zip -O archive.zip
+      unzip archive.zip speed-snail-master/icons/* -d ./
+      mv ./speed-snail-master/icons/* ./.icons
+      unzip archive.zip speed-snail-master/themes/* -d ./
+      mv ./speed-snail-master/themes/* ./.themes
+      rm -rf ./speed-snail-master/
+      rm -rf ./archive.zip
 		  
 		  apt install gnome-tweaks -y
 		  apt install gnome-shell-extensions -y
 		  apt install unity-tweak-tool -y
 		  
 		  gsettings set org.gnome.shell.extensions.dash-to-dock dash-max-icon-size 64
-          gsettings set org.gnome.shell.extensions.dash-to-dock extend-height false
-          gsettings set org.gnome.shell.extensions.dash-to-dock apply-custom-theme true
-          gsettings set org.gnome.shell.extensions.dash-to-dock dock-position 'BOTTOM'
-          gsettings set org.gnome.shell.extensions.dash-to-dock show-apps-at-top true
-          gsettings set org.gnome.shell.extensions.dash-to-dock unity-backlit-items true
-
+      gsettings set org.gnome.shell.extensions.dash-to-dock extend-height false
+      gsettings set org.gnome.shell.extensions.dash-to-dock apply-custom-theme true
+      gsettings set org.gnome.shell.extensions.dash-to-dock dock-position 'BOTTOM'
+      gsettings set org.gnome.shell.extensions.dash-to-dock show-apps-at-top true
+      gsettings set org.gnome.shell.extensions.dash-to-dock unity-backlit-items true
 		  ;;
 
 		12)#Opera
