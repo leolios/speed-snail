@@ -137,18 +137,26 @@ if ping -q -c 1 -W 1 8.8.8.8 >/dev/null; then
 
         echo ""
         echo "Add git informations and fonts for terminal"
+        echo "-------------------------------------------"
+        echo ""
+
         apt-get install fonts-powerline
+
+        # Install language Go
         wget https://dl.google.com/go/go1.13.linux-amd64.tar.gz
         tar -C /usr/local -xzf go1.13.linux-amd64.tar.gz
         sed -i '$ a export PATH=$PATH:/usr/local/go/bin' ~/.profile
-        source ~/.profile
         
+        # Custom terminal
         sed -i '$ a function _update_ps1() {' ~/.bashrc
         sed -i '$ a PS1="$($GOPATH/bin/powerline-go -error $?)"' ~/.bashrc
         sed -i '$ a }' ~/.bashrc
         sed -i '$ a if [ "$TERM" != "linux" ] && [ -f "$GOPATH/bin/powerline-go" ]; then' ~/.bashrc
         sed -i '$ a PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"' ~/.bashrc
         sed -i '$ a fi' ~/.bashrc
+        
+        source ~/.profile
+        source ~/.bashrc
 
 
 	    # loop for select instruction
