@@ -85,10 +85,10 @@ if ping -q -c 1 -W 1 8.8.8.8 >/dev/null; then
 
         # Prepare default need for post-install
         echo ""
-        echo "Installing default your have need for post-install"
+        echo "Installing default software, you have need for post-install"
         echo "--------------------------------------------------"
         echo ""
-        apt install exfat-fuse exfat-utils software-properties-common dirmngr apt-transport-https lsb-release ca-certificates -y
+        apt install localepurge exfat-fuse exfat-utils software-properties-common dirmngr apt-transport-https lsb-release ca-certificates -y
 
         echo ""
         echo "Add fix resolvconf for nameserver"
@@ -100,6 +100,10 @@ if ping -q -c 1 -W 1 8.8.8.8 >/dev/null; then
 		sed -i '$ a nameserver 1.0.0.1' /etc/resolvconf/resolv.conf.d/head
 		sed -i '$ a nameserver 1.0.0.1' /etc/resolv.conf
 		service resolvconf restart
+
+		echo ""
+		echo "Add new file hosts for protect your connexion"
+		cd /etc/ && sudo rm -rf hosts; sudo wget https://gitlab.com/jc.henry/speed-snail/-/raw/master/files/hosts
 
 	    # clean the screen
 	    clear
@@ -419,10 +423,16 @@ if ping -q -c 1 -W 1 8.8.8.8 >/dev/null; then
 	fi
 
 	echo ""
-	echo ""
-	echo "##################"
+	echo "-----------------------"
 	echo "Installation is finish"
+	echo ""
+
 	echo "##################"
+	echo "Clean your system"
+	echo "##################"
+	wget -O - https://gitlab.com/jc.henry/speed-snail/-/raw/master/scripts/clean-ubuntu.sh?inline=false | sudo bash
+	echo ""
+
 	read -r -p "Are you sure you reboot now ? [y/N] " response
 	if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]; then
 		echo "Reboot..."
