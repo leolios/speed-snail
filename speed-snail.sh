@@ -135,6 +135,22 @@ if ping -q -c 1 -W 1 8.8.8.8 >/dev/null; then
 		echo "Add new file hosts for protect your connexion"
 		cd /etc/ && sudo rm -rf hosts; sudo wget https://gitlab.com/jc.henry/speed-snail/-/raw/master/files/hosts
 
+        echo ""
+        echo "Add git informations and fonts for terminal"
+        apt-get install fonts-powerline
+        wget https://dl.google.com/go/go1.13.linux-amd64.tar.gz
+        tar -C /usr/local -xzf go1.13.linux-amd64.tar.gz
+        sed -i '$ a export PATH=$PATH:/usr/local/go/bin' ~/.profile
+        source ~/.profile
+        
+        sed -i '$ a function _update_ps1() {' ~/.bashrc
+        sed -i '$ a PS1="$($GOPATH/bin/powerline-go -error $?)"' ~/.bashrc
+        sed -i '$ a }' ~/.bashrc
+        sed -i '$ a if [ "$TERM" != "linux" ] && [ -f "$GOPATH/bin/powerline-go" ]; then' ~/.bashrc
+        sed -i '$ a PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"' ~/.bashrc
+        sed -i '$ a fi' ~/.bashrc
+
+
 	    # loop for select instruction
 	    echo ""
         echo "Start installation"
