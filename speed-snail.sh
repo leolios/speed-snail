@@ -34,12 +34,12 @@ if ping -q -c 1 -W 1 8.8.8.8 >/dev/null; then
 	    echo ""
 	    echo "Updating and Upgrading"
 	    echo "----------------------"
-	    apt-get update && sudo apt-get upgrade -y
+	    apt-get update && apt-get upgrade -y
 
 	    # Installation dialog for display options
 	    echo "Installation dialog for display options"
 	    echo ""
-	    sudo apt-get install dialog
+	    apt-get install dialog
 
 	    # dialog --title "Licence" --textbox "You are agree for use this software ?" 0 0
 
@@ -259,11 +259,11 @@ if ping -q -c 1 -W 1 8.8.8.8 >/dev/null; then
 		  echo "##################"
 		  apt install adminer -y
 		  cd /usr/share/adminer
-		  sudo php compile.php
+		  php compile.php
 		  echo "Alias /adminer.php /usr/share/adminer/adminer-4.6.2.php" | sudo tee /etc/apache2/conf-available/adminer.conf
 		  cd /etc/apache2/conf-available/
 		  a2enconf adminer.conf
-		  sudo systemctl reload apache2
+		  systemctl reload apache2
 		  ;;
 
 		16)#Custom dock
@@ -280,9 +280,9 @@ if ping -q -c 1 -W 1 8.8.8.8 >/dev/null; then
 		  echo "Installation visual studio code"
 		  echo "##################"
 		  wget -q https://packages.microsoft.com/keys/microsoft.asc -O- | sudo apt-key add -
-		  sudo add-apt-repository "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main"
-		  sudo apt update
-		  sudo apt install code -y
+		  add-apt-repository "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main"
+		  apt update
+		  apt install code -y
 		  ;;
 
 		18)#Intellij
@@ -290,7 +290,7 @@ if ping -q -c 1 -W 1 8.8.8.8 >/dev/null; then
 		  echo "##################"
 		  echo "Installation Intellij"
 		  echo "##################"
-		  sudo snap install intellij-idea-ultimate --classic --edge
+		  snap install intellij-idea-ultimate --classic --edge
 		  ;;
 
 		19)#Indicator
@@ -325,7 +325,7 @@ if ping -q -c 1 -W 1 8.8.8.8 >/dev/null; then
 		  echo "Installation let'sencrypt"
 		  echo "##################"
 		  apt-get install software-properties-common
-		  # add-apt-repository universe && add-apt-repository ppa:certbot/certbot
+		  add-apt-repository universe && add-apt-repository ppa:certbot/certbot
 		  apt-get update && apt-get install certbot python-certbot-apache -y
 		  certbot --apache
 		  ;;
