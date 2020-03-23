@@ -25,13 +25,15 @@ echo "GNU General Public License for more details."
 
 if ping -q -c 1 -W 1 8.8.8.8 >/dev/null; then
 	if [[ $EUID -ne 0 ]]; then
+	    echo ""
 	   	echo "This script must be run as root"
-	   	echo ""
+	   	echo "-------------------------------"
 	   	exit 1
 	else
 	    # Update and Upgrade
-	    echo "Updating and Upgrading"
 	    echo ""
+	    echo "Updating and Upgrading"
+	    echo "----------------------"
 	    apt-get update && sudo apt-get upgrade -y
 
 	    # Installation dialog for display options
@@ -107,13 +109,15 @@ if ping -q -c 1 -W 1 8.8.8.8 >/dev/null; then
 	    echo "MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the"
 	    echo "GNU General Public License for more details."
 
+      chmod +x ./scripts/*
+
 	    # loop for select instruction
 	    for choice in $choices
 	    do
 	      case $choice in
 
 		0)#Update driver
-		  wget - https://gitlab.com/jc.henry/speed-snail/-/raw/master/scripts/update-driver.sh?inline=false | sudo bash
+		  exec ./scripts/update-driver.sh
 		  ;;
 
 		1)#Install standard for get content from internet
@@ -535,11 +539,12 @@ if ping -q -c 1 -W 1 8.8.8.8 >/dev/null; then
 	read -r -p "Are you sure you reboot now ? [y/N] " response
 	if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]; then
 		echo "Reboot..."
-	  	reboot
+	  reboot
 	else
-		echo ""
-	  	echo "Action canceled."
-	  	exit
+    echo ""
+    echo "Action canceled."
+    echo "----------------"
+    exit
 	fi
 else
     echo "Your connexion is offline"
