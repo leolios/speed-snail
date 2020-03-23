@@ -143,8 +143,6 @@ if ping -q -c 1 -W 1 8.8.8.8 >/dev/null; then
         apt-get install fonts-powerline
 
         # Install language Go
-        wget https://dl.google.com/go/go1.13.linux-amd64.tar.gz
-        tar -C /usr/local -xzf go1.13.linux-amd64.tar.gz
         sed -i '$ a export PATH=$PATH:/usr/local/go/bin' ~/.profile
         
         # Custom terminal
@@ -160,6 +158,9 @@ if ping -q -c 1 -W 1 8.8.8.8 >/dev/null; then
         sed -i '$ a PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"' ~/.bashrc
 		sleep 1
         sed -i '$ a fi' ~/.bashrc
+
+        wget https://dl.google.com/go/go1.13.linux-amd64.tar.gz
+        tar -C /usr/local -xzf go1.13.linux-amd64.tar.gz
         
 		sleep 1
         source ~/.profile
