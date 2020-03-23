@@ -8,6 +8,21 @@ echo "${bold}|___ | | | ( (/ ( (/ ( (_| |  |___ | | | ( ( | | | |"
 echo "${bold}(___/| ||_/ \____)____)____|  (___/|_| |_|\_||_|_|_|"
 echo "${bold}     |_|                                            "
 echo ""
+echo "@Autor : Jean-Christophe HENRY"
+echo "@email : jean.christophe.henry.pro@gmail.com"
+echo "@Git   : https://gitlab.com/jc.henry/speed-snail"
+echo "
+  Copyright (C) 2020
+  This program is free software; you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation; either version 3 of the License, or
+  (at your option) any later version.
+
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+"
 
 if ping -q -c 1 -W 1 8.8.8.8 >/dev/null; then
 	if [[ $EUID -ne 0 ]]; then
@@ -79,7 +94,20 @@ if ping -q -c 1 -W 1 8.8.8.8 >/dev/null; then
 	    echo "${bold}     |_|                                            "
 	    echo ""
 	    echo "@Autor : Jean-Christophe HENRY"
-	    echo "@Git : "
+	    echo "@email : jean.christophe.henry.pro@gmail.com"
+	    echo "@Git   : https://gitlab.com/jc.henry/speed-snail"
+	    echo "
+		  Copyright (C) 2020
+	   	  This program is free software; you can redistribute it and/or modify
+	          it under the terms of the GNU General Public License as published by
+	          the Free Software Foundation; either version 3 of the License, or
+	          (at your option) any later version.
+
+	          This program is distributed in the hope that it will be useful,
+	          but WITHOUT ANY WARRANTY; without even the implied warranty of
+	          MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+	          GNU General Public License for more details.
+	    "
 
 	    # loop for select instruction
 	    for choice in $choices
