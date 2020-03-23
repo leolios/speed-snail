@@ -85,31 +85,6 @@ if ping -q -c 1 -W 1 8.8.8.8 >/dev/null; then
 	    )
 	    choices=$("${cmd[@]}" "${options[@]}" 2>&1 >/dev/tty)
 
-        # Prepare default need for post-install
-        echo ""
-        echo "Installing default software, you have need for post-install"
-        echo "--------------------------------------------------"
-        echo ""
-        apt install localepurge exfat-fuse exfat-utils software-properties-common dirmngr apt-transport-https lsb-release ca-certificates -y
-
-        echo ""
-        echo "Add fix resolvconf for nameserver"
-        echo "---------------------------------"
-        echo ""
-		apt install resolvconf
-		sed -i '$ a nameserver 1.1.1.1' /etc/resolvconf/resolv.conf.d/head
-		sed -i '$ a nameserver 1.1.1.1' /etc/resolv.conf
-		sed -i '$ a nameserver 1.0.0.1' /etc/resolvconf/resolv.conf.d/head
-		sed -i '$ a nameserver 1.0.0.1' /etc/resolv.conf
-		service resolvconf restart
-
-		echo ""
-		echo "Add new file hosts for protect your connexion"
-		cd /etc/ && sudo rm -rf hosts; sudo wget https://gitlab.com/jc.henry/speed-snail/-/raw/master/files/hosts
-
-	    # clean the screen
-	    clear
-
 	    echo "${bold}                          _                     _ _"
 	    echo "${bold}                         | |                   (_) |"
 	    echo "${bold}  ___ ____   ____ ____ _ | |    ___ ____   ____ _| |"
@@ -135,7 +110,36 @@ if ping -q -c 1 -W 1 8.8.8.8 >/dev/null; then
 	    echo "MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the"
 	    echo "GNU General Public License for more details."
 
+	    # clean the screen
+	    clear
+
+        # Prepare default need for post-install
+        echo ""
+        echo "Installing default software, you have need for post-install"
+        echo "--------------------------------------------------"
+        echo ""
+        apt install localepurge exfat-fuse exfat-utils software-properties-common dirmngr apt-transport-https lsb-release ca-certificates wget -y
+
+        echo ""
+        echo "Add fix resolvconf for nameserver"
+        echo "---------------------------------"
+        echo ""
+		apt install resolvconf
+		sed -i '$ a nameserver 1.1.1.1' /etc/resolvconf/resolv.conf.d/head
+		sed -i '$ a nameserver 1.1.1.1' /etc/resolv.conf
+		sed -i '$ a nameserver 1.0.0.1' /etc/resolvconf/resolv.conf.d/head
+		sed -i '$ a nameserver 1.0.0.1' /etc/resolv.conf
+		service resolvconf restart
+
+		echo ""
+		echo "Add new file hosts for protect your connexion"
+		cd /etc/ && sudo rm -rf hosts; sudo wget https://gitlab.com/jc.henry/speed-snail/-/raw/master/files/hosts
+
 	    # loop for select instruction
+	    echo ""
+        echo "Start installation"
+        echo "------------------"
+        echo ""
 	    for choice in $choices
 	    do
 	      case $choice in
