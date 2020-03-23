@@ -109,15 +109,13 @@ if ping -q -c 1 -W 1 8.8.8.8 >/dev/null; then
 	    echo "MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the"
 	    echo "GNU General Public License for more details."
 
-      chmod +x ./scripts/*
-
 	    # loop for select instruction
 	    for choice in $choices
 	    do
 	      case $choice in
 
 		0)#Update driver
-		  exec ./scripts/update-driver.sh
+		  wget -O - https://gitlab.com/jc.henry/speed-snail/-/raw/master/scripts/update-driver.sh?inline=false | sudo bash
 		  ;;
 
 		1)#Install standard for get content from internet
