@@ -113,13 +113,7 @@ if ping -q -c 1 -W 1 8.8.8.8 >/dev/null; then
 	      case $choice in
 
 		0)#Update driver
-		  echo ""
-		  echo "##################"
-		  echo "Auto update driver"
-		  echo "##################"
-		  # add-apt-repository ppa:graphics-drivers/ppa
-		  # apt update
-		  ubuntu-drivers autoinstall
+		  wget - https://gitlab.com/jc.henry/speed-snail/-/raw/master/scripts/update-driver.sh?inline=false | sudo bash
 		  ;;
 
 		1)#Install standard for get content from internet
@@ -310,7 +304,7 @@ if ping -q -c 1 -W 1 8.8.8.8 >/dev/null; then
 		  apt install vlc -y
 		  ;;
 
-		11)#Unity tweak tool
+		11)#Unity tweak tool th
 		  echo ""
 		  echo "##################"
 		  echo "Installing Tool Tweak and configure themes"
