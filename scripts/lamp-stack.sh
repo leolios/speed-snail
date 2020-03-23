@@ -36,10 +36,10 @@ expect \"Veuillez saisir 0 = LOW, 1 = MEDIUM and 2 = STRONG:  \"
 send \"2\r\"
 
 expect \"New password: \"
-send \"#Mysql?2580\r\"
+send \"TempPassword-9876\r\"
 
 expect \"Re-enter new password: \"
-send \"#Mysql?2580\r\"
+send \"TempPassword-9876\r\"
 
 expect \"Do you wish to continue with the password provided?\"
 send \"y\r\"
@@ -62,8 +62,8 @@ expect eof
 echo "$SECURE_MYSQL"
 
 # Update root mysql
-mysql -u root -p "#Mysql?2580" -e "DALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '#Mysql?2580';"
-mysql -u root -p "#Mysql?2580" -e "FLUSH PRIVILEGES"
+mysql -u root -p "TempPassword-9876" -e "DALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'TempPassword-9876';"
+mysql -u root -p "TempPassword-9876" -e "FLUSH PRIVILEGES"
 
 echo ""
 echo "##################"
