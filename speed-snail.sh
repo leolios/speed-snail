@@ -90,6 +90,17 @@ if ping -q -c 1 -W 1 8.8.8.8 >/dev/null; then
         echo ""
         apt install exfat-fuse exfat-utils software-properties-common dirmngr apt-transport-https lsb-release ca-certificates -y
 
+        echo ""
+        echo "Add fix resolvconf for nameserver"
+        echo "---------------------------------"
+        echo ""
+		apt install resolvconf
+		sed -i '$ a nameserver 1.1.1.1' /etc/resolvconf/resolv.conf.d/head
+		sed -i '$ a nameserver 1.1.1.1' /etc/resolv.conf
+		sed -i '$ a nameserver 1.0.0.1' /etc/resolvconf/resolv.conf.d/head
+		sed -i '$ a nameserver 1.0.0.1' /etc/resolv.conf
+		service resolvconf restart
+
 	    # clean the screen
 	    clear
 
