@@ -1,6 +1,6 @@
 # speed-snail
 
-Speed Snail is an interactive command line program post install Ubuntu 18.04
+Speed Snail is an interactive command line program post install Ubuntu 18.04 (desktop and server)
 
 # How to use 
 
