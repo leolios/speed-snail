@@ -83,15 +83,22 @@ if ping -q -c 1 -W 1 8.8.8.8 >/dev/null; then
 	    )
 	    choices=$("${cmd[@]}" "${options[@]}" 2>&1 >/dev/tty)
 
+        # Prepare default need for post-install
+        echo ""
+        echo "Installing default your have need for post-install"
+        echo "--------------------------------------------------"
+        echo ""
+        apt install exfat-fuse exfat-utils software-properties-common dirmngr apt-transport-https lsb-release ca-certificates -y
+
 	    # clean the screen
 	    clear
 
 	    echo "${bold}                          _                     _ _"
 	    echo "${bold}                         | |                   (_) |"
 	    echo "${bold}  ___ ____   ____ ____ _ | |    ___ ____   ____ _| |"
-            echo "${bold} /___)  _ \ / _  ) _  ) || |   /___)  _ \ / _  | | |"
+        echo "${bold} /___)  _ \ / _  ) _  ) || |   /___)  _ \ / _  | | |"
 	    echo "${bold}|___ | | | ( (/ ( (/ ( (_| |  |___ | | | ( ( | | | |"
-            echo "${bold}(___/| ||_/ \____)____)____|  (___/|_| |_|\_||_|_|_|"
+        echo "${bold}(___/| ||_/ \____)____)____|  (___/|_| |_|\_||_|_|_|"
 	    echo "${bold}     |_|                                            "
 	    echo ""
 	    echo "@Author : Jean-Christophe HENRY"
@@ -147,8 +154,8 @@ if ping -q -c 1 -W 1 8.8.8.8 >/dev/null; then
 		  echo "##################"
 		  echo "Installing JDK 8"
 		  echo "##################"
-		  # add-apt-repository ppa:webupd8team/java -y
-		  # apt update
+		  add-apt-repository ppa:webupd8team/java -y
+		  apt update
 		  apt install oracle-java8-installer -y
 		  apt install openjdk-8-jdk -y
 		  ;;
@@ -184,24 +191,24 @@ if ping -q -c 1 -W 1 8.8.8.8 >/dev/null; then
 		  echo "##################"
 
 		  cd && mkdir .icons .themes
-      wget https://gitlab.com/jc.henry/speed-snail/-/archive/master/speed-snail-master.zip -O archive.zip
-      unzip archive.zip speed-snail-master/icons/* -d ./
-      mv ./speed-snail-master/icons/* ./.icons
-      unzip archive.zip speed-snail-master/themes/* -d ./
-      mv ./speed-snail-master/themes/* ./.themes
-      rm -rf ./speed-snail-master/
-      rm -rf ./archive.zip
+          wget https://gitlab.com/jc.henry/speed-snail/-/archive/master/speed-snail-master.zip -O archive.zip
+          unzip archive.zip speed-snail-master/icons/* -d ./
+          mv ./speed-snail-master/icons/* ./.icons
+          unzip archive.zip speed-snail-master/themes/* -d ./
+          mv ./speed-snail-master/themes/* ./.themes
+          rm -rf ./speed-snail-master/
+          rm -rf ./archive.zip
 		  
 		  apt install gnome-tweaks -y
 		  apt install gnome-shell-extensions -y
 		  apt install unity-tweak-tool -y
 		  
 		  gsettings set org.gnome.shell.extensions.dash-to-dock dash-max-icon-size 64
-      gsettings set org.gnome.shell.extensions.dash-to-dock extend-height false
-      gsettings set org.gnome.shell.extensions.dash-to-dock apply-custom-theme true
-      gsettings set org.gnome.shell.extensions.dash-to-dock dock-position 'BOTTOM'
-      gsettings set org.gnome.shell.extensions.dash-to-dock show-apps-at-top true
-      gsettings set org.gnome.shell.extensions.dash-to-dock unity-backlit-items true
+          gsettings set org.gnome.shell.extensions.dash-to-dock extend-height false
+          gsettings set org.gnome.shell.extensions.dash-to-dock apply-custom-theme true
+          gsettings set org.gnome.shell.extensions.dash-to-dock dock-position 'BOTTOM'
+          gsettings set org.gnome.shell.extensions.dash-to-dock show-apps-at-top true
+          gsettings set org.gnome.shell.extensions.dash-to-dock unity-backlit-items true
 		  ;;
 
 		12)#Opera
