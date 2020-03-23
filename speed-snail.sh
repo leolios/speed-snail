@@ -148,14 +148,22 @@ if ping -q -c 1 -W 1 8.8.8.8 >/dev/null; then
         sed -i '$ a export PATH=$PATH:/usr/local/go/bin' ~/.profile
         
         # Custom terminal
+		sleep 1
         sed -i '$ a function _update_ps1() {' ~/.bashrc
+		sleep 1
         sed -i '$ a PS1="$($GOPATH/bin/powerline-go -error $?)"' ~/.bashrc
+		sleep 1
         sed -i '$ a }' ~/.bashrc
+		sleep 1
         sed -i '$ a if [ "$TERM" != "linux" ] && [ -f "$GOPATH/bin/powerline-go" ]; then' ~/.bashrc
+		sleep 1
         sed -i '$ a PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"' ~/.bashrc
+		sleep 1
         sed -i '$ a fi' ~/.bashrc
         
+		sleep 1
         source ~/.profile
+		sleep 1
         source ~/.bashrc
 
 
