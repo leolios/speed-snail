@@ -119,6 +119,7 @@ if ping -q -c 1 -W 1 8.8.8.8 >/dev/null; then
         echo "--------------------------------------------------"
         echo ""
         apt install localepurge exfat-fuse exfat-utils software-properties-common dirmngr apt-transport-https lsb-release ca-certificates wget -y
+        sysctl net.ipv6.conf.all.disable_ipv6=1
 
         echo ""
         echo "Add fix resolvconf for nameserver"
