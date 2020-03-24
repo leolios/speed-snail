@@ -12,10 +12,7 @@ if you need insert CD at step Auto update driver, edit your app list :
 
 ```bash
 sudo nano /etc/apt/sources.list
-```
-
-Add # befor CD-ROM
-```bash
+Add # before dev cdrom
 # deb cdrom:[Ubuntu 20.04 LTS _Focal Fossa_ - Alpha amd64 (20200315)]/ focal main restricted
 ```
 
