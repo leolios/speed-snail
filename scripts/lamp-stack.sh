@@ -23,47 +23,49 @@ echo "_____A Revoir_____"
 echo "##################"
 echo "Configuration to secure mysql"
 echo "##################"
-[ ! -e /usr/bin/expect ] && apt-get update && apt-get -y install expect
-SECURE_MYSQL=$(expect -c "
+mysql_secure_installation
 
-set timeout 10
-spawn mysql_secure_installation
+#[ ! -e /usr/bin/expect ] && apt-get update && apt-get -y install expect
+#SECURE_MYSQL=$(expect -c "
 
-expect \"Press y|Y for Yes, any other key for No: \"
-send \"y\r\"
+#set timeout 10
+#spawn mysql_secure_installation
 
-expect \"Veuillez saisir 0 = LOW, 1 = MEDIUM and 2 = STRONG:  \"
-send \"2\r\"
+#expect \"Press y|Y for Yes, any other key for No: \"
+#send \"y\r\"
 
-expect \"New password: \"
-send \"TempPassword-9876\r\"
+#expect \"Veuillez saisir 0 = LOW, 1 = MEDIUM and 2 = STRONG:  \"
+#send \"2\r\"
 
-expect \"Re-enter new password: \"
-send \"TempPassword-9876\r\"
+#expect \"New password: \"
+#send \"TempPassword-9876\r\"
 
-expect \"Do you wish to continue with the password provided?\"
-send \"y\r\"
+#expect \"Re-enter new password: \"
+#send \"TempPassword-9876\r\"
 
-expect \"Remove anonymous users? \"
-send \"y\r\"
+#expect \"Do you wish to continue with the password provided?\"
+#send \"y\r\"
 
-expect \"Disallow root login remotely? \"
-send \"y\r\"
+#expect \"Remove anonymous users? \"
+#send \"y\r\"
 
-expect \"Remove test database and access to it? \"
-send \"y\r\"
+#expect \"Disallow root login remotely? \"
+#send \"y\r\"
 
-expect \"Reload privilege tables now? \"
-send \"y\r\"
+#expect \"Remove test database and access to it? \"
+#send \"y\r\"
 
-expect eof
-")
+#expect \"Reload privilege tables now? \"
+#send \"y\r\"
 
-echo "$SECURE_MYSQL"
+#expect eof
+#")
+
+#echo "$SECURE_MYSQL"
 
 # Update root mysql
-mysql -u root -p "TempPassword-9876" -e "DALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'TempPassword-9876';"
-mysql -u root -p "TempPassword-9876" -e "FLUSH PRIVILEGES"
+# mysql -u root -p "TempPassword-9876" -e "DALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'TempPassword-9876';"
+# mysql -u root -p "TempPassword-9876" -e "FLUSH PRIVILEGES"
 
 echo ""
 echo "##################"
