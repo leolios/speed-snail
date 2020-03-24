@@ -85,6 +85,9 @@ if ping -q -c 1 -W 1 8.8.8.8 >/dev/null; then
 	    )
 	    choices=$("${cmd[@]}" "${options[@]}" 2>&1 >/dev/tty)
 
+	    # clear the screen
+	    clear
+
 	    echo "${bold}                          _                     _ _"
 	    echo "${bold}                         | |                   (_) |"
 	    echo "${bold}  ___ ____   ____ ____ _ | |    ___ ____   ____ _| |"
@@ -109,9 +112,6 @@ if ping -q -c 1 -W 1 8.8.8.8 >/dev/null; then
 	    echo "but WITHOUT ANY WARRANTY; without even the implied warranty of"
 	    echo "MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the"
 	    echo "GNU General Public License for more details."
-
-	    # clean the screen
-	    clear
 
         # Prepare default need for post-install
         echo ""
