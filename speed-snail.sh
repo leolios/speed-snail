@@ -136,37 +136,37 @@ if ping -q -c 1 -W 1 8.8.8.8 >/dev/null; then
 		echo "Add new file hosts for protect your connexion"
 		cd /etc/ && sudo rm -rf hosts; sudo wget https://gitlab.com/jc.henry/speed-snail/-/raw/master/files/hosts
 
-        echo ""
-        echo "Add git informations and fonts for terminal"
-        echo "-------------------------------------------"
-        echo ""
+        #echo ""
+        #echo "Add git informations and fonts for terminal"
+        #echo "-------------------------------------------"
+        #echo ""
 
-        apt-get install fonts-powerline
+        #apt-get install fonts-powerline
 
         # Install language Go
-        sed -i '$ a export PATH=$PATH:/usr/local/go/bin' ~/.profile
+        #sed -i '$ a export PATH=$PATH:/usr/local/go/bin' ~/.profile
         
         # Custom terminal
-		sleep 1
-        sed -i '$ a function _update_ps1() {' ~/.bashrc
-		sleep 1
-        sed -i '$ a PS1="$($GOPATH/bin/powerline-go -error $?)"' ~/.bashrc
-		sleep 1
-        sed -i '$ a }' ~/.bashrc
-		sleep 1
-        sed -i '$ a if [ "$TERM" != "linux" ] && [ -f "$GOPATH/bin/powerline-go" ]; then' ~/.bashrc
-		sleep 1
-        sed -i '$ a PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"' ~/.bashrc
-		sleep 1
-        sed -i '$ a fi' ~/.bashrc
+		#sleep 1
+        #sed -i '$ a function _update_ps1() {' ~/.bashrc
+		#sleep 1
+        #sed -i '$ a PS1="$($GOPATH/bin/powerline-go -error $?)"' ~/.bashrc
+		#sleep 1
+        #sed -i '$ a }' ~/.bashrc
+		#sleep 1
+        #sed -i '$ a if [ "$TERM" != "linux" ] && [ -f "$GOPATH/bin/powerline-go" ]; then' ~/.bashrc
+		#sleep 1
+        #sed -i '$ a PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"' ~/.bashrc
+		#sleep 1
+        #sed -i '$ a fi' ~/.bashrc
 
-        wget https://dl.google.com/go/go1.13.linux-amd64.tar.gz
-        tar -C /usr/local -xzf go1.13.linux-amd64.tar.gz
+        #wget https://dl.google.com/go/go1.13.linux-amd64.tar.gz
+        #tar -C /usr/local -xzf go1.13.linux-amd64.tar.gz
         
-		sleep 1
-        source ~/.profile
-		sleep 1
-        source ~/.bashrc
+		#sleep 1
+        #source ~/.profile
+		#sleep 1
+        #source ~/.bashrc
 
 
 	    # loop for select instruction
