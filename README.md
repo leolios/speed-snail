@@ -4,6 +4,8 @@ Speed Snail is an interactive command line program post install Ubuntu 18.04 and
 
 # How to use 
 
+Be careful the use of the script can make your system unstable, it is not always finished in development
+
 ```bash
 wget -O - https://gitlab.com/jc.henry/speed-snail/-/raw/master/speed-snail.sh?inline=false | sudo bash
 ```
